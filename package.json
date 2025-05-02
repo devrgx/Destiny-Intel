@@ -3,17 +3,24 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "delete": "node delete-commands.js",
-    "deploy": "node deploy-commands.js"
+    "scraper": "node scraper.js",
+    "delete": "node delete.js",
+    "deploy": "node deploy.js",
+    "start:bot": "node index.js",
+    "start": "npm-run-all --color delete deploy start:bot",
+    "fullstart": "npm-run-all --color scraper delete deploy start:bot"
   },
   "author": "rgx",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@discordjs/rest": "^2.5.0",
+    "axios": "^1.9.0",
+    "cheerio": "^1.0.0",
     "discord.js": "^14.19.2",
     "dotenv": "^16.5.0"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }
