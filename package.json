@@ -1,0 +1,19 @@
+{
+  "name": "destiny-intel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "delete": "node delete-commands.js",
+    "deploy": "node deploy-commands.js"
+  },
+  "author": "rgx",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@discordjs/rest": "^2.5.0",
+    "discord.js": "^14.19.2",
+    "dotenv": "^16.5.0"
+  }
+}
