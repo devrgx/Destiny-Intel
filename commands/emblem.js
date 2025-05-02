@@ -1,38 +1,35 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const emblems = require('../data/emblems.json'); // Die JSON-Datei mit den Emblemen
+const emblems = require('../data/emblems.json');
 const data = require("../data/data.json")
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('emblem')
-    .setDescription('Zeigt Infos zu einem Destiny 2 Emblem')
+    .setDescription('Displays info about selected Emblem!')
     .addStringOption(option =>
-      option
-        .setName('name')
-        .setDescription('Name des Emblems')
+      option.setName('name')
+        .setDescription('Name of the Emblem:')
         .setAutocomplete(true)
         .setRequired(true)
     ),
 
-  // Autocomplete-Funktion für die Namenssuche
   async autocomplete(interaction) {
     const focused = interaction.options.getFocused();
     const filtered = emblems
       .filter(e => e.name.toLowerCase().includes(focused.toLowerCase()))
-      .slice(0, 25); // Discord erlaubt max. 25 Vorschläge
+      .slice(0, 25);
 
     await interaction.respond(
       filtered.map(e => ({ name: e.name, value: e.id }))
     );
   },
 
-  // Der eigentliche Command, um ein Embed zu senden
   async execute(interaction) {
     const emblemId = interaction.options.getString('name');
     const emblem = emblems.find(e => e.id === emblemId);
 
     if (!emblem) {
-      return interaction.reply({ content: 'Emblem nicht gefunden.', ephemeral: true });
+      return interaction.reply({ content: 'No Emblem found with that name.', ephemeral: true });
     }
 
     const embed = new EmbedBuilder()
@@ -48,5 +45,5 @@ module.exports = {
       .setFooter({ text: `Destiny Intel | v ${data.version}`, iconURL: 'https://i.imgur.com/cVoKfFP.png' });
 
     await interaction.reply({ embeds: [embed] });
-  },
+  }
 };
