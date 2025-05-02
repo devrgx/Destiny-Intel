@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const emblems = require('../data/emblems.json'); // Die JSON-Datei mit den Emblemen
+const data = require("../data/data.json")
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -36,10 +37,15 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setTitle(emblem.name)
-      .setDescription(`**Source:** ${emblem.source}\n\n**Requirements:**\n${emblem.requirements.join('\n')}`)
+      .setDescription(`[DEC](https://destinyemblemcollector.com/emblem?id=${emblem.id})\n[emblem.report](https://emblem.report/${emblem.id})\n[light.gg](https://www.light.gg/db/items/${emblem.id})\n`)
+      .addFields(
+        { name: '**Source**', value: `${emblem.source}` },
+        { name: '**Requirements:**', value: `${emblem.requirements.join('\n')}` }
+      )
       .setThumbnail(emblem.images[0]) // Icon
       .setImage(emblem.images[2])     // Großes Bild
-      .setColor(0x0099ff);
+      .setColor(0x0099ff)
+      .setFooter({ text: `Destiny Intel | v ${data.version}`, iconURL: 'https://i.imgur.com/cVoKfFP.png' });
 
     await interaction.reply({ embeds: [embed] });
   },

@@ -22,6 +22,9 @@ const commands = [
           .setAutocomplete(true)
           .setRequired(true)
       ),
+      new SlashCommandBuilder()
+      .setName('icon')
+      .setDescription('displays the icon')
     // Weitere Befehle können hier hinzugefügt werden
   ]
     .map(command => command.toJSON());
