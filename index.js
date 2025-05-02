@@ -1,19 +1,21 @@
 require('dotenv').config();
-const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
-const token = process.env.TOKEN;
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-
 client.commands = new Collection();
 
-// Lade alle Slash-Commands aus dem commands-Verzeichnis
+// Dynamisch alle Command-Dateien laden
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
-  client.commands.set(command.data.name, command);
+  if ('data' in command && 'execute' in command) {
+    client.commands.set(command.data.name, command);
+  } else {
+    console.warn(`[WARN] Die Datei ${file} exportiert keinen gültigen Slash-Command.`);
+  }
 }
 
 // Wenn der Bot bereit ist
@@ -21,24 +23,28 @@ client.once('ready', () => {
   console.log(`${client.user.tag} ist jetzt online!`);
 });
 
-// Interaktion abfangen (z.B. wenn ein Slash-Command ausgeführt wird)
+// Event-Handler für Slash-Commands und Autocomplete
 client.on('interactionCreate', async interaction => {
+  if (interaction.isCommand()) {
     const command = client.commands.get(interaction.commandName);
-  
     if (!command) return;
-  
+
     try {
-      if (interaction.isCommand()) {
-        await command.execute(interaction);
-      } else if (interaction.isAutocomplete() && command.autocomplete) {
-        await command.autocomplete(interaction);
-      }
+      await command.execute(interaction);
     } catch (error) {
       console.error(error);
-      if (interaction.isCommand()) {
-        await interaction.reply({ content: 'Es gab einen Fehler bei der Ausführung des Commands!', ephemeral: true });
+      await interaction.reply({ content: 'Fehler bei der Ausführung des Befehls.', ephemeral: true });
+    }
+  } else if (interaction.isAutocomplete()) {
+    const command = client.commands.get(interaction.commandName);
+    if (command && typeof command.autocomplete === 'function') {
+      try {
+        await command.autocomplete(interaction);
+      } catch (error) {
+        console.error('Fehler bei Autocomplete:', error);
       }
     }
-  });
+  }
+});
 
 client.login(process.env.TOKEN);
