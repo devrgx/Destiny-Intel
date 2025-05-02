@@ -3410,13 +3410,12 @@
     "name": "Enigmatology",
     "images": [
       "https://destinyemblemcollector.b-cdn.net/public/images/777753/777753-Icon.jpg",
-      "https://destinyemblemcollector.b-cdn.net/public/images/777753/777753-SecondaryIcon.jpg",
-      "https://destinyemblemcollector.b-cdn.net/public/images/777753/777753-SecondarySpecial.jpg"
+      "https://destinyemblemcollector.b-cdn.net/public/images/777753/777753-SecondaryIconv2.jpg",
+      "https://destinyemblemcollector.b-cdn.net/public/images/777753/777753-SecondarySpecialv2.jpg"
     ],
     "source": "Unlocked by a special offer.",
     "requirements": [
-      "Obtained after completing all 27 chess puzzles in Eris' Throne World, then completing the final chess puzzle.  Video link below containing all of the steps from picking up the chess pieces to finishing the final puzzle.",
-      "Apologies for in-game images for this emblem, this emblem isn't in the API yet."
+      "Obtained after completing all 27 chess puzzles in Eris' Throne World, then completing the final chess puzzle.  Video link below containing all of the steps from picking up the chess pieces to finishing the final puzzle."
     ]
   },
   {
@@ -11507,7 +11506,7 @@
     ],
     "source": "Unlocked by a special offer.",
     "requirements": [
-      "Awarded as a Twitch Drop for watching the Bungie Edge of Fate reveal stream for 15 minutes.  The stream takes place on 2025-05-06 at 10AM PT at twitch.tv/bungie."
+      "Awarded as a Twitch Drop for watching the Bungie Edge of Fate reveal stream for 15 minutes.  The stream takes place on 2025-05-06 at 9AM PT at twitch.tv/bungie."
     ]
   },
   {
