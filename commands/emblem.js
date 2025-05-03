@@ -34,10 +34,12 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setTitle(emblem.name)
-      .setDescription(`[DEC](https://destinyemblemcollector.com/emblem?id=${emblem.id})\n[emblem.report](https://emblem.report/${emblem.id})\n[light.gg](https://www.light.gg/db/items/${emblem.id})\n`)
+      //.setDescription(`[DEC](https://destinyemblemcollector.com/emblem?id=${emblem.id})\n[emblem.report](https://emblem.report/${emblem.id})\n[light.gg](https://www.light.gg/db/items/${emblem.id})\n`)
       .addFields(
         { name: '**Source**', value: `${emblem.source}` },
-        { name: '**Requirements:**', value: `${emblem.requirements.join('\n')}` }
+        { name: '**Requirements:**', value: `${emblem.requirements.join('\n')}` },
+        { name: 'Links', value: `<:destinyemblemcollector:1368220405420003348> [DEC](https://destinyemblemcollector.com/emblem?id=${emblem.id})\n<:emblemreport:1368220407127081031> [emblem.report](https://emblem.report/${emblem.id})`, inline: true },
+        { name: '\u200B', value: `<:lightgg:1368220409039683594> [light.gg](https://www.light.gg/db/items/${emblem.id})\n<:dataexplorer:1368220403281035366> [DataExplorer](https://data.destinysets.com/i/InventoryItem:${emblem.id})`, inline: true }
       )
       .setThumbnail(emblem.images[0]) // Icon
       .setImage(emblem.images[2])     // Großes Bild
