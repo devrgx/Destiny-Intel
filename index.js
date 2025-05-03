@@ -1,7 +1,8 @@
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
+const data = require("./data/data.json")
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
@@ -33,7 +34,7 @@ client.on('interactionCreate', async interaction => {
       await command.execute(interaction);
     } catch (error) {
       console.error(error);
-      await interaction.reply({ content: 'Fehler bei der Ausführung des Befehls.', ephemeral: true });
+      await interaction.reply({ content: 'Error while executing command. Try again later or report to Dev.', ephemeral: true });
     }
   } else if (interaction.isAutocomplete()) {
     const command = client.commands.get(interaction.commandName);
@@ -46,5 +47,38 @@ client.on('interactionCreate', async interaction => {
     }
   }
 });
+
+
+client.on('guildCreate', async guild => {
+  console.log(`Bot got added to: ${guild.name} (${guild.id})`);
+  
+  try {
+    // Versuche, die Audit Logs für Bot-Invites zu lesen
+    const auditLogs = await guild.fetchAuditLogs({ type: 28, limit: 1 }); // 28 = BOT_ADD
+    const entry = auditLogs.entries.first();
+
+    if (entry && entry.target.id === client.user.id) {
+      const inviter = entry.executor;
+
+      // Sende eine DM an den Einlader
+      const user = await guild.client.users.fetch(inviter.id);
+
+      const embed = new EmbedBuilder()
+        .setTitle("Emblem Intel")
+        .setDescription(`Thanks for inviting **${client.user.tag}** to **${guild.name}**.\n\nIf you find any issues, need help or want to discuss new features, consider joining our [Server](https://discord.gg/wgSFPBuRhF), you can create a new invite, or join the support Server with the \`/bot\` subcommand.\n\nAll data is provided by multiple people, including DestinyEmblemCollector. You can check out his project (and other people who contributed) with \`/credits\`.`)
+        .setColor(0x0099ff)
+        .setFooter({
+          text: `Destiny Intel | v ${data.version}`,
+          iconURL: "https://i.imgur.com/cVoKfFP.png",
+        });
+      await user.send({ embeds: [embed]});
+
+      console.log(`From: ${inviter.tag}`);
+    }
+  } catch (error) {
+    console.error('Error while trying to join server:', error);
+  }
+});
+
 
 client.login(process.env.TOKEN);
