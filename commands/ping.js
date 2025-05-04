@@ -24,6 +24,6 @@ module.exports = {
         iconURL: "https://i.imgur.com/cVoKfFP.png",
       });
 
-    await interaction.editReply({ content: "" , embeds: [embed] });
+    await interaction.editReply({ embeds: [embed] });
   },
 };
