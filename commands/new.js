@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const {
+  SlashCommandBuilder,
+  EmbedBuilder,
+  ChannelType,
+} = require("discord.js");
 const emblems = require("../data/emblems.json");
 const data = require("../data/data.json");
 const ADMIN_USER_ID = "330992301558202378";
@@ -63,24 +67,39 @@ module.exports = {
         iconURL: "https://i.imgur.com/cVoKfFP.png",
       });
 
-    // Hole den spezifischen Kanal mit der Kanal-ID
+    // Hole den spezifischen Kanal
     const channel = await interaction.client.channels.fetch(
       "1367631268015116319"
     );
 
-    if (channel) {
-      // Sende die Nachricht an den Kanal
-      await channel.send({ embeds: [embed] });
-
-      // Informiere den Admin über den Erfolg
+    if (!channel || channel.type !== ChannelType.GuildAnnouncement) {
       return interaction.reply({
-        content: "Emblem information has been sent to the specified channel.",
+        content:
+          "Der angegebene Kanal ist kein Announcement-Channel oder konnte nicht gefunden werden.",
         ephemeral: true,
       });
-    } else {
-      // Wenn der Kanal nicht gefunden wurde, sende eine Fehlermeldung
-      return interaction.reply({
-        content: "The specified channel could not be found.",
+    }
+
+    try {
+      // Sende die Nachricht
+      const sentMessage = await channel.send({ embeds: [embed] });
+
+      // Veröffentliche sie automatisch
+      await sentMessage.crosspost();
+
+      // Erfolgsmeldung
+      await interaction.reply({
+        content: "Emblem wurde erfolgreich gesendet und veröffentlicht!",
+        ephemeral: true,
+      });
+    } catch (error) {
+      console.error(
+        "Fehler beim Senden oder Veröffentlichen der Nachricht:",
+        error
+      );
+      await interaction.reply({
+        content:
+          "Beim Senden oder Veröffentlichen der Nachricht ist ein Fehler aufgetreten.",
         ephemeral: true,
       });
     }
