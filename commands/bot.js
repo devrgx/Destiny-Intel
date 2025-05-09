@@ -22,10 +22,10 @@ module.exports = {
     const invite = new EmbedBuilder()
       .setTitle("Invite the Bot")
       .setURL(
-        "https://discord.com/oauth2/authorize?client_id=1367825593114038272&permissions=964220546240&integration_type=0&scope=bot"
+        "https://discord.com/oauth2/authorize?client_id=1367825593114038272&permissions=139586825408&integration_type=0&scope=bot+applications.commands"
       )
       .setDescription(
-        "You can add the Bot to your own Server, just click [here](https://discord.com/oauth2/authorize?client_id=1367825593114038272&permissions=964220546240&integration_type=0&scope=bot)."
+        "You can add the Bot to your own Server, just click [here](https://discord.com/oauth2/authorize?client_id=1367825593114038272&permissions=139586825408&integration_type=0&scope=bot+applications.commands)."
       )
       .setColor(0x0099ff)
       .setFooter({

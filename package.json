@@ -3,12 +3,21 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "scraper": "node scraper.js",
-    "delete": "node delete.js",
-    "deploy": "node deploy.js",
-    "start:bot": "node index.js",
-    "start": "npm-run-all --color delete deploy start:bot",
-    "fullstart": "npm-run-all --color scraper delete deploy start:bot"
+    "deploy:guild": "node manage-commands.js deploy",
+    "delete:guild": "node manage-commands.js delete",
+    "status:guild": "node manage-commands.js status",
+    "reset:guild": "npm run delete:guild && npm run deploy:guild",
+
+    "deploy:guild:slow": "node manage-commands.js deploy --sequential",
+    "reset:guild:slow": "npm run delete:guild && npm run deploy:guild:slow",
+
+    "deploy:global": "node manage-commands.js deploy --global",
+    "delete:global": "node manage-commands.js delete --global",
+    "status:global": "node manage-commands.js status --global",
+    "reset:global": "npm run delete:global && npm run deploy:global",
+
+    "deploy:global:slow": "node manage-commands.js deploy --global --sequential",
+    "reset:global:slow": "npm run delete:global && npm run deploy:global:slow"
   },
   "author": "rgx",
   "license": "ISC",
