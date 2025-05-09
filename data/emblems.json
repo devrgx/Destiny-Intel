@@ -1001,6 +1001,20 @@
     ]
   },
   {
+    "id": "3079989885",
+    "name": "Astromancy",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/9d5b1bfad72ff8c55c20cfa36a0c2893.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/cff2cfa7ddf07781e69ddc55d281dd6e.png",
+      "https://www.bungie.net/common/destiny2_content/icons/b4eddcca25d685688cfeed1c44c94235.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/96c4099a9bd37330034d2093012057fd.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+    ]
+  },
+  {
     "id": "2010554576",
     "name": "At the Vanguard",
     "images": [
@@ -1815,6 +1829,20 @@
     ]
   },
   {
+    "id": "3598944131",
+    "name": "Calibrated",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/2c981a376e0315bc6bc14e6bec50acac.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/909d780155e29c520af3453b7eb00a16.png",
+      "https://www.bungie.net/common/destiny2_content/icons/716c920d1b798c3da50cf5d6541da0c2.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/0486cc79e34f981cca77023589ef9127.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Obtained after completing all Elegant Arsenal quests as part of Rite of the Nine."
+    ]
+  },
+  {
     "id": "1554459526",
     "name": "California Love",
     "images": [
@@ -2053,6 +2081,20 @@
     "source": "",
     "requirements": [
       "Awarded from Bungie promoting your artwork in the TWAB in Destiny 2 Year 4. Retired at the start of Season 17, Season of the Haunted."
+    ]
+  },
+  {
+    "id": "3029657017",
+    "name": "Cinematographer",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/9e9b4060fd48b247df5ffa6192cee5ad.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/9e1a77e8018d0bbce2984e6262b4d8ed.png",
+      "https://www.bungie.net/common/destiny2_content/icons/c95614240b53cb9fb11d6617b97d62b5.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/54a9a0f02859549274233631f3ffcb4e.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
     ]
   },
   {
@@ -3406,14 +3448,29 @@
     ]
   },
   {
-    "id": "777753",
-    "name": "Enigmatology",
+    "id": "1611948523",
+    "name": "Engraved Deeds",
     "images": [
-      "https://destinyemblemcollector.b-cdn.net/public/images/777753/777753-Icon.jpg",
-      "https://destinyemblemcollector.b-cdn.net/public/images/777753/777753-SecondaryIconv2.jpg",
-      "https://destinyemblemcollector.b-cdn.net/public/images/777753/777753-SecondarySpecialv2.jpg"
+      "https://www.bungie.net/common/destiny2_content/icons/2fc1b4a5631be2edec23c403dd0d35ef.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/9c64b1dd55d5d883867ffdd29d5d30d4.png",
+      "https://www.bungie.net/common/destiny2_content/icons/b98115713999de65cac82a37b83a2815.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/2f85b1a8483d73b698dc5566eb941702.jpg"
     ],
     "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Awarded to those who are in the top 10% of Guardians during Guardian Games 2025."
+    ]
+  },
+  {
+    "id": "1611948520",
+    "name": "Enigmatology",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/e3cc157cbcb8c552f665ebc7107edfd6.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/907edc472c9cca0aab154a379bd9ade5.png",
+      "https://www.bungie.net/common/destiny2_content/icons/cc1b998ad16439557ba2a60233af52f0.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/d16faf98729b8be542552c00f0d7676c.jpg"
+    ],
+    "source": "Offer the correct final answer in an uncharted space",
     "requirements": [
       "Obtained after completing all 27 chess puzzles in Eris' Throne World, then completing the final chess puzzle.  Video link below containing all of the steps from picking up the chess pieces to finishing the final puzzle."
     ]
@@ -3487,6 +3544,20 @@
     "source": "",
     "requirements": [
       "Pledge to Dead Orbit during a Season 02 Faction Rally."
+    ]
+  },
+  {
+    "id": "3598944130",
+    "name": "Esper",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/89315aa7057489d5c37a1a2ef0b571e9.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/af23ef72e8905df8c441016d416dfaa6.png",
+      "https://www.bungie.net/common/destiny2_content/icons/847f1ada3eb8a9b6e114c52afe2582d8.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/5b0c7c6dc3c48887c8ac67cdc3c63ab1.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
     ]
   },
   {
@@ -3724,6 +3795,20 @@
     ]
   },
   {
+    "id": "1611948521",
+    "name": "Explosive Disassembly",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/6e617ebd2f7a6a8309989266a5651c4a.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/92aab53fdd01417950e2a2c676eeeaa1.png",
+      "https://www.bungie.net/common/destiny2_content/icons/1e021b164ecdddb147f2a406a6c471ed.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/c6810b5da17caca5d11ae096f20251f2.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+    ]
+  },
+  {
     "id": "3992231371",
     "name": "External Sights",
     "images": [
@@ -3734,7 +3819,7 @@
     ],
     "source": "Unlocked by a special offer.",
     "requirements": [
-      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+      "Obtained by preordering Destiny 2: The Edge Of Fate Standard Edition, Destiny 2: Year of Prophecy Edition, or Destiny 2: Year of Prophecy Ultimate Edition."
     ]
   },
   {
@@ -3851,6 +3936,20 @@
     "source": "Solstice",
     "requirements": [
       "Obtained after completing the Event Challenge for stoking the flames 35 times during Solstice 2024."
+    ]
+  },
+  {
+    "id": "3079989873",
+    "name": "Faster Than Light",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/2370eeaef333beb79e0c709913ea8f05.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/875208c5e981a57a39c53e6f36418074.png",
+      "https://www.bungie.net/common/destiny2_content/icons/774b345d230a0b9017bdb480f1abcb24.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/1b57b13b9e774786c50d36d6693e1c7f.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
     ]
   },
   {
@@ -4240,6 +4339,20 @@
     "source": "Purchased from Lord Shaxx.",
     "requirements": [
       "This emblem was given out to players in celebration of Ranked PvP's release. Only tracks your stats from when it was released (at the beginning of Season 03) onwards."
+    ]
+  },
+  {
+    "id": "3598944128",
+    "name": "Foretold",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/ebb05f68dd92e9d73b32f0fa15380a0d.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/893b22be1a7853c4324973be1f8e0f2b.png",
+      "https://www.bungie.net/common/destiny2_content/icons/0787f5634ea53fd686b196e5657d9a82.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/e11da5a02f6aedbf830eba841e027a2a.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
     ]
   },
   {
@@ -5560,6 +5673,20 @@
     ]
   },
   {
+    "id": "3598944132",
+    "name": "Immortality",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/5842f20c4e65b3e283b5d3a06421915a.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/79fa7ca3d98ae5a51a0cdfb9d7a31eff.png",
+      "https://www.bungie.net/common/destiny2_content/icons/b02c7c961e87503096bd41e4ed2797d0.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/e7a1cdd7f8a258fed5f8c4dad2b5c43b.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+    ]
+  },
+  {
     "id": "1784442063",
     "name": "In Urbe Inventa",
     "images": [
@@ -5613,6 +5740,20 @@
     "source": "",
     "requirements": [
       "Collect both Crimson Days sparrows.  Emblem will be awarded via Bungie Rewards."
+    ]
+  },
+  {
+    "id": "3079989875",
+    "name": "Incandescent",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/3cb129a210c036bcf13fb77de24aa0fa.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/85ce06389006281190b5474ee7e9103b.png",
+      "https://www.bungie.net/common/destiny2_content/icons/4d07f1bf3d675996182afd9c5768f55e.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/527661110decc1890dea07eee78237fe.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
     ]
   },
   {
@@ -6590,6 +6731,20 @@
     ]
   },
   {
+    "id": "3079989874",
+    "name": "Luminary",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/b016d9ec71ac849df95a5b9d34b54e6e.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/ea9476cb1e5f1a1c25e7eef0a0788591.png",
+      "https://www.bungie.net/common/destiny2_content/icons/a98d1e843826cebaaf0f9c6d4f3913f7.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/7f3a82444d95a68cf27ad32635b39745.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+    ]
+  },
+  {
     "id": "1767664467",
     "name": "Luminary Kaleidoscope",
     "images": [
@@ -6675,12 +6830,13 @@
     ]
   },
   {
-    "id": "777755",
+    "id": "3029657020",
     "name": "Mad Dog",
     "images": [
-      "https://destinyemblemcollector.b-cdn.net/public/images/777755/777755-Icon.jpg",
-      "https://destinyemblemcollector.b-cdn.net/public/images/777755/777755-SecondaryIcon.jpg",
-      "https://destinyemblemcollector.b-cdn.net/public/images/777755/777755-SecondarySpecial.jpg"
+      "https://www.bungie.net/common/destiny2_content/icons/2bb947b040245d42b0b7208fa28cae7f.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/33cd485f644e8fa817650faf076be58f.png",
+      "https://www.bungie.net/common/destiny2_content/icons/6be49dcf8cc83c0df8675d5da8ba3059.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/43afdc0c3f21dca6125cabc872a1f35e.jpg"
     ],
     "source": "Unlocked by a special offer.",
     "requirements": [
@@ -7045,6 +7201,20 @@
     ]
   },
   {
+    "id": "3079989878",
+    "name": "Mors Certa",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/f504b323df97eda524604d933b0f45b5.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/890827b139812c6d520941554504b6ed.png",
+      "https://www.bungie.net/common/destiny2_content/icons/7380fc0beb772ea6946a4c93bb3962c7.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/a274b8d3eeb199f918bee687a7329e5e.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+    ]
+  },
+  {
     "id": "3961503943",
     "name": "Music of Mercury",
     "images": [
@@ -7288,6 +7458,20 @@
     ]
   },
   {
+    "id": "3079989884",
+    "name": "Nine-Crowned",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/d5538e8d0d607d9efe8d78cb930e5dc6.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/882acc3bbe05863386406f8d83ffa9e5.png",
+      "https://www.bungie.net/common/destiny2_content/icons/bf57a3919c8d39603501e9a7bd87ce20.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/d7caeda2201c56713c72b83b6978d6ce.png"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+    ]
+  },
+  {
     "id": "2399682324",
     "name": "No More Flame Turrets",
     "images": [
@@ -7371,6 +7555,20 @@
     "source": "Unlocked by a special offer.",
     "requirements": [
       "Awarded to Bungie Forum Mentors during Destiny 2 Year 4."
+    ]
+  },
+  {
+    "id": "3029657022",
+    "name": "Observer Effect",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/14303325abd5a83276738614742dfeae.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/5d2413f6b267086f9e75e07a3d7d278b.png",
+      "https://www.bungie.net/common/destiny2_content/icons/ca861b8c9ee626ab2767b538382e30d0.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/3cd189cfe1c08c58ebcd97a84aa10c87.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
     ]
   },
   {
@@ -7754,7 +7952,7 @@
     ],
     "source": "Unlocked by a special offer.",
     "requirements": [
-      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+      "Obtained by preordering The Edge of Fate Collector's Edition from the Bungie Store."
     ]
   },
   {
@@ -7942,6 +8140,20 @@
     ]
   },
   {
+    "id": "3029657016",
+    "name": "Pixel Perfect",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/7326097f65117aeb62cd7a4f38a038cc.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/35ca1b6c3f7eb7bf266a1baaaf7e8c32.png",
+      "https://www.bungie.net/common/destiny2_content/icons/19cac515cd8589401700ec410b042efb.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/a6ea94d86b1682ec7068f5e8bb09395f.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+    ]
+  },
+  {
     "id": "4011836821",
     "name": "Plaid Pride",
     "images": [
@@ -8043,6 +8255,20 @@
     "source": "Earned during the seasonal Dawning event.",
     "requirements": [
       "Obtained after finishing the Dawning 2023 introdution quest."
+    ]
+  },
+  {
+    "id": "3029657023",
+    "name": "Polychromatic Refraction",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/aa42a694b5e7a4b795ea0abce8aaf704.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/3e24a3b9003b866345d63b8527332c76.png",
+      "https://www.bungie.net/common/destiny2_content/icons/730473533d2be4253dccac156bfdb87b.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/8a236199778e58a3d1c8d1f6c03d4eb5.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
     ]
   },
   {
@@ -8600,6 +8826,20 @@
     ]
   },
   {
+    "id": "3079989872",
+    "name": "Refulgent",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/50701f9556bc9a4a414496303ac4443f.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/92a4a2f5353e667ad56e74c1fb4ff110.png",
+      "https://www.bungie.net/common/destiny2_content/icons/2f754dd2a09367c74bc4470a9237ea91.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/2b173e366e3594b4d1d73f205907e64b.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+    ]
+  },
+  {
     "id": "802191381",
     "name": "Regency",
     "images": [
@@ -8978,6 +9218,20 @@
     ]
   },
   {
+    "id": "3079989879",
+    "name": "Runner",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/f3ed3239bcea3d037e3b788de0d9c4df.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/ed1c80c35d2957850ffca300ff3f6e3d.png",
+      "https://www.bungie.net/common/destiny2_content/icons/b2ac09f5d8482aa5034015113d092ecd.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/a8dc088c1657c28eaead7226a1ce3957.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+    ]
+  },
+  {
     "id": "3605230073",
     "name": "SUROS Upgrade",
     "images": [
@@ -9335,6 +9589,20 @@
     "requirements": [
       "Obtain this emblem by redeeming one (1) Credit during the Game2Give 2024 Fundraiser.",
       "Previously: Donate at least $50 to the Team Rubicon Preparedness Month Campaign.  The campaign ended September 30th, 2022."
+    ]
+  },
+  {
+    "id": "3598944129",
+    "name": "Seer",
+    "images": [
+      "https://www.bungie.net/common/destiny2_content/icons/1d98935723ec396f75117de24f4fede2.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/f1d6e4fbd7e89c349b2d10fa379fbb62.png",
+      "https://www.bungie.net/common/destiny2_content/icons/5dfa6556de9f32680273f0130be9289c.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/5ab0780a7e434121fe4848dd40772cda.jpg"
+    ],
+    "source": "Unlocked by a special offer.",
+    "requirements": [
+      "Obtained by earning Gold scores on each encouter in Spire of the Watcher on Eternity mode during Rite of the Nine."
     ]
   },
   {
@@ -11497,16 +11765,17 @@
     ]
   },
   {
-    "id": "777754",
+    "id": "3029657021",
     "name": "Theoxenia",
     "images": [
-      "https://destinyemblemcollector.b-cdn.net/public/images/777754/777754-Icon.jpg",
-      "https://destinyemblemcollector.b-cdn.net/public/images/777754/777754-SecondaryIcon.jpg",
-      "https://destinyemblemcollector.b-cdn.net/public/images/777754/777754-SecondarySpecial.jpg"
+      "https://www.bungie.net/common/destiny2_content/icons/56a3e30f6695cd7a4656ba90c2e47b33.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/cf4449619593b29a046a6c811af487fa.png",
+      "https://www.bungie.net/common/destiny2_content/icons/b0aa203df87f1c5f99aa0dd7c68025a5.jpg",
+      "https://www.bungie.net/common/destiny2_content/icons/43fc8791f1d48159b85a6428b1cf0d96.jpg"
     ],
     "source": "Unlocked by a special offer.",
     "requirements": [
-      "Awarded as a Twitch Drop for watching the Bungie Edge of Fate reveal stream for 15 minutes.  The stream takes place on 2025-05-06 at 9AM PT at twitch.tv/bungie."
+      "Awarded as a Twitch Drop for watching the Bungie Edge of Fate reveal stream for 15 minutes."
     ]
   },
   {
@@ -13092,34 +13361,6 @@
     "source": "Earn rank-up packages from Lakshmi-2.",
     "requirements": [
       "Pledge allegiance to Future War Cult during the Season 03 Faction Rally."
-    ]
-  },
-  {
-    "id": "1611948521",
-    "name": "[Unnamed]",
-    "images": [
-      "https://www.bungie.net/common/destiny2_content/icons/6e617ebd2f7a6a8309989266a5651c4a.jpg",
-      "https://www.bungie.net/common/destiny2_content/icons/92aab53fdd01417950e2a2c676eeeaa1.png",
-      "https://www.bungie.net/common/destiny2_content/icons/1e021b164ecdddb147f2a406a6c471ed.jpg",
-      "https://www.bungie.net/common/destiny2_content/icons/c6810b5da17caca5d11ae096f20251f2.jpg"
-    ],
-    "source": "Unlocked by a special offer.",
-    "requirements": [
-      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
-    ]
-  },
-  {
-    "id": "1611948523",
-    "name": "[Unnamed]",
-    "images": [
-      "https://www.bungie.net/common/destiny2_content/icons/2fc1b4a5631be2edec23c403dd0d35ef.jpg",
-      "https://www.bungie.net/common/destiny2_content/icons/9c64b1dd55d5d883867ffdd29d5d30d4.png",
-      "https://www.bungie.net/common/destiny2_content/icons/b98115713999de65cac82a37b83a2815.jpg",
-      "https://www.bungie.net/common/destiny2_content/icons/2f85b1a8483d73b698dc5566eb941702.jpg"
-    ],
-    "source": "Unlocked by a special offer.",
-    "requirements": [
-      "Awarded to those who are in the top 10% of Guardians during Guardian Games 2025."
     ]
   },
   {
