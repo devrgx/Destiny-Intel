@@ -29,7 +29,9 @@ app.get("/auth/start", (req, res) => {
 
   const authUrl = `https://www.bungie.net/en/oauth/authorize?client_id=${
     process.env.CLIENT_ID
-  }&response_type=code&state=${state}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+  }&response_type=code&state=${state}&redirect_uri=${encodeURIComponent(
+    redirectUri
+  )}`;
 
   return res.redirect(authUrl);
 });
@@ -73,7 +75,8 @@ app.get("/auth/bungie/callback", async (req, res) => {
     const discordId = state;
 
     const destinyAccount = bungie.destinyMemberships[0];
-    if (!destinyAccount) return res.status(500).send("No Destiny account found.");
+    if (!destinyAccount)
+      return res.status(500).send("No Destiny account found.");
 
     const users = loadUsers();
 
@@ -96,15 +99,13 @@ app.get("/auth/bungie/callback", async (req, res) => {
       <p>You can now return to Discord.</p>
     `);
   } catch (error) {
-  const desc = error.response?.data?.error_description;
-  console.error("OAuth Error:", error.response?.data || error.message);
-  res.status(500).send(`
+    const desc = error.response?.data?.error_description || error.message;
+    console.error("OAuth Error:", error.response?.data || error.message);
+    res.status(500).send(`
     <h2>❌ OAuth Error</h2>
-    <p>${desc || error.message}</p>
+    <p>${desc}</p>
     <pre>${JSON.stringify(error.response?.data, null, 2)}</pre>
   `);
-}
-
     console.error("OAuth Error:", error.response?.data || error.message);
     res.status(500).send("OAuth authentication failed.");
   }
@@ -112,7 +113,8 @@ app.get("/auth/bungie/callback", async (req, res) => {
 
 // ✅ Fehleranzeige
 app.get("/auth/error", (req, res) => {
-  const message = req.query.message || "Ein unbekannter Fehler ist aufgetreten.";
+  const message =
+    req.query.message || "Ein unbekannter Fehler ist aufgetreten.";
   res.send(`
     <h2>⚠️ Login Error</h2>
     <p>${message}</p>
