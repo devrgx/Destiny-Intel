@@ -20,7 +20,7 @@ function saveUsers(users) {
 }
 
 // ✅ Auth-Start-Router
-app.get("/start", (req, res) => {
+app.get("/auth/start", (req, res) => {
   const discordId = req.query.discordId;
   if (!discordId) return res.status(400).send("Discord ID fehlt.");
 
@@ -35,7 +35,7 @@ app.get("/start", (req, res) => {
 });
 
 // ✅ OAuth Callback
-app.get("/bungie/callback", async (req, res) => {
+app.get("/auth/bungie/callback", async (req, res) => {
   const code = req.query.code;
   const state = req.query.state;
 
@@ -108,7 +108,7 @@ app.get("/bungie/callback", async (req, res) => {
 });
 
 // ✅ Fehleranzeige
-app.get("/error", (req, res) => {
+app.get("/auth/error", (req, res) => {
   const message = req.query.message || "Ein unbekannter Fehler ist aufgetreten.";
   res.send(`
     <h2>⚠️ Login Error</h2>
