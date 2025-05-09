@@ -8,7 +8,7 @@ const { getValidAccessToken } = require("./utils/tokenManager");
 const app = express();
 const PORT = 3000;
 
-const usersFilePath = path.join(__dirname, "../data/users.json");
+const usersFilePath = path.join(__dirname, "./data/users.json");
 
 function loadUsers() {
   if (!fs.existsSync(usersFilePath)) return {};
