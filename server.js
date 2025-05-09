@@ -24,7 +24,7 @@ app.get("/auth/start", (req, res) => {
   const discordId = req.query.discordId;
   if (!discordId) return res.status(400).send("Discord ID fehlt.");
 
-  const redirectUri = `${process.env.BASE_URL}/bungie/callback`;
+  const redirectUri = `${process.env.BASE_URL}/auth/bungie/callback`;
   const state = discordId;
 
   const authUrl = `https://www.bungie.net/en/oauth/authorize?client_id=${
@@ -96,11 +96,14 @@ app.get("/auth/bungie/callback", async (req, res) => {
       <p>You can now return to Discord.</p>
     `);
   } catch (error) {
-    const desc = error.response?.data?.error_description;
-    if (desc === "DestinyThrottledByGameServer") {
-      const msg = encodeURIComponent("Bungie is currently overloaded. Try again soon.");
-      return res.redirect(`/auth/error?message=${msg}`);
-    }
+  const desc = error.response?.data?.error_description;
+  console.error("OAuth Error:", error.response?.data || error.message);
+  res.status(500).send(`
+    <h2>❌ OAuth Error</h2>
+    <p>${desc || error.message}</p>
+    <pre>${JSON.stringify(error.response?.data, null, 2)}</pre>
+  `);
+}
 
     console.error("OAuth Error:", error.response?.data || error.message);
     res.status(500).send("OAuth authentication failed.");
