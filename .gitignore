@@ -1,7 +1,5 @@
 .env
 package-lock.json
-/data/*.png
-/data/users.json
+/data/img
 /node_modules
 /node_modules/*
-/DestinyIntel-Bot
