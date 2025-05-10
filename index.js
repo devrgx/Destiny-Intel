@@ -6,18 +6,32 @@ const data = require("./data/data.json")
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
-
+const commandFolders = ['./commands', './test_commands'];
 // Dynamisch alle Command-Dateien laden
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+//const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+client.commands = new Collection();
 
-for (const file of commandFiles) {
+// Dynamisch alle Command-Dateien laden, auch aus /testcommands
+for (const folder of commandFolders) {
+  const commandFiles = fs.readdirSync(folder).filter(file => file.endsWith('.js'));
+
+  for (const file of commandFiles) {
+    const command = require(`${folder}/${file}`);
+    console.log(`Lade Command: ${command.data.name}`);  // Überprüfe, ob der neue Command auch geladen wird
+
+    if ('data' in command && 'execute' in command) {
+      client.commands.set(command.data.name, command);
+    }
+  }
+}
+/*for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
   if ('data' in command && 'execute' in command) {
     client.commands.set(command.data.name, command);
   } else {
     console.warn(`[WARN] Die Datei ${file} exportiert keinen gültigen Slash-Command.`);
   }
-}
+}*/
 
 // Wenn der Bot bereit ist
 client.once('ready', () => {
