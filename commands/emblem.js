@@ -68,7 +68,7 @@ async function getEmblemReportData(emblemId) {
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("emblemtest")
+    .setName("emblem")
     .setDescription("Displays info about selected Emblem!")
     .addStringOption((option) =>
       option
