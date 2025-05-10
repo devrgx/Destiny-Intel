@@ -8,7 +8,7 @@ const emblemsPath = path.join(__dirname, "../data/emblems.json");
 let emblems = require(emblemsPath);
 const data = require("../data/data.json");
 
-const CACHE_DURATION_HOURS = 24;
+const CACHE_DURATION_HOURS = 6;
 
 // ⏳ Speichert die aktualisierte JSON-Datei
 function saveEmblems(updated) {
@@ -24,13 +24,15 @@ function isCacheValid(lastUpdated) {
 
 // 🌐 Scraper für emblems.report
 async function getEmblemReportData(emblemId) {
+  //const url = `https://emblems.report/emblem/${emblemId}`;
   const url = `https://emblems.report/emblem/${emblemId}`;
+
   try {
     const res = await axios.get(url);
     const $ = cheerio.load(res.data);
 
-    let price = "error";
-    let redeemed = "error";
+    let price = null;
+    let redeemed = null;
 
     $("p.text-sm.text-white\\/50").each((i, el) => {
       const label = $(el).text().trim();
@@ -41,14 +43,16 @@ async function getEmblemReportData(emblemId) {
       if (label === "Redeemed") redeemed = value;
     });
 
-    if (!price || !redeemed || price === "error" || redeemed === "error") {
-      throw new Error("Required data missing");
+    if (!redeemed || redeemed === "error") {
+      throw new Error("Required data missing: redeemed");
     }
 
+    const hasValidPrice = !!price && price !== "N/A";
+
     return {
-      price,
+      price: price || "N/A",
       redeemed,
-      priceSource: "live",
+      priceSource: "live", // Immer "live", wenn kein Fehler geworfen wurde
       lastUpdated: new Date().toISOString(),
     };
   } catch (e) {
@@ -64,7 +68,7 @@ async function getEmblemReportData(emblemId) {
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("emblem")
+    .setName("emblemtest")
     .setDescription("Displays info about selected Emblem!")
     .addStringOption((option) =>
       option
@@ -72,6 +76,11 @@ module.exports = {
         .setDescription("Name of the Emblem:")
         .setAutocomplete(true)
         .setRequired(true)
+    )
+    .addBooleanOption((option) =>
+      option
+        .setName("force-update")
+        .setDescription("Force update of emblem data (overrides cache)")
     ),
 
   async autocomplete(interaction) {
@@ -87,6 +96,7 @@ module.exports = {
 
   async execute(interaction) {
     await interaction.deferReply(); // Verzögere die Antwort
+    const forceUpdate = interaction.options.getBoolean("force-update") || false;
 
     const emblemId = interaction.options.getString("name");
     const emblem = emblems.find((e) => e.id === emblemId);
@@ -98,14 +108,19 @@ module.exports = {
       });
     }
 
-    // Optional: Fallback für alte JSON-Dateien
-    if (!("price" in emblem)) emblem.price = "unknown";
-    if (!("redeemed" in emblem)) emblem.redeemed = "unknown";
+    // Optional: Fallback & Migration für alte JSON-Daten
+    if (!("price" in emblem) || emblem.price === "unknown")
+      emblem.price = "N/A";
+    if (!("redeemed" in emblem) || emblem.redeemed === "unknown")
+      emblem.redeemed = "error";
     if (!("priceSource" in emblem)) emblem.priceSource = "cache";
     if (!("lastUpdated" in emblem)) emblem.lastUpdated = null;
 
     const needsUpdate =
-      !emblem.price || !emblem.redeemed || !isCacheValid(emblem.lastUpdated);
+      forceUpdate ||
+      emblem.price === "error" ||
+      emblem.redeemed === "error" ||
+      !isCacheValid(emblem.lastUpdated);
 
     if (needsUpdate) {
       const updatedData = await getEmblemReportData(emblemId);
@@ -114,6 +129,7 @@ module.exports = {
       console.log(
         `📡 Neue Daten für Emblem ${emblem.name} (${emblem.id}) abgefragt und gespeichert.`
       );
+      console.log("Aktualisierte Emblem-Daten:", emblem);
 
       saveEmblems(emblems);
     }
@@ -138,11 +154,14 @@ module.exports = {
         },
         {
           name: "\u200B",
-          value: "\u200B"
+          value: "\u200B",
         },
         {
           name: "**Price**",
-          value: emblem.price,
+          value:
+            emblem.price && emblem.price !== "N/A"
+              ? emblem.price
+              : "🔻 No Price Available",
           inline: true,
         },
         {
@@ -152,12 +171,29 @@ module.exports = {
         },
         {
           name: "Data source",
-          value:
-            emblem.priceSource === "live"
-              ? `🔄 Live from emblems.report\n🕒 ${new Date(
-                  emblem.lastUpdated
-                ).toLocaleString()}`
-              : "⚠️ Data missing\nEither an error, or the emblem does not have a price!",
+          value: (() => {
+            if (emblem.price && emblem.price !== "N/A") {
+              // Preis vorhanden und live
+              return `🔄 Live from emblems.report\n🕒 ${new Date(
+                emblem.lastUpdated
+              ).toLocaleString()}`;
+            } else if (emblem.priceSource === "live") {
+              // Preis nicht vorhanden und live
+              return `🔄 Live from emblems.report\n🕒 ${new Date(
+                emblem.lastUpdated
+              ).toLocaleString()}\n⚠️ This emblem does not have a price (yet) or is universal!`;
+            } else if (emblem.price && emblem.price !== "N/A") {
+              // Preis vorhanden und aus dem Cache
+              return `⚠️ Data from cache\n🕒 ${new Date(
+                emblem.lastUpdated
+              ).toLocaleString()}`;
+            } else {
+              // Preis nicht vorhanden und aus dem Cache
+              return `⚠️ Data from cache\n🕒 ${new Date(
+                emblem.lastUpdated
+              ).toLocaleString()}\n⚠️ This emblem does not have a price (yet) or is universal!`;
+            }
+          })(),
         }
       )
       .setThumbnail(emblem.images[0] || "https://example.com/default.jpg")
