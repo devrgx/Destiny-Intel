@@ -54,7 +54,11 @@
     "source": "Unlocked by a special offer.",
     "requirements": [
       "This emblem is the Movie of the Week (MOTW) emblem starting in Season 22 (Season of the Witch)."
-    ]
+    ],
+    "price": "N/A",
+    "redeemed": "327",
+    "priceSource": "live",
+    "lastUpdated": "2025-05-10T18:20:45.432Z"
   },
   {
     "id": "866034303",
@@ -82,7 +86,11 @@
     "source": "Crota's End Raid",
     "requirements": [
       "Clear Crota's End during the 48 hour Challenge Mode window."
-    ]
+    ],
+    "price": "N/A",
+    "redeemed": "18714",
+    "priceSource": "live",
+    "lastUpdated": "2025-05-10T18:20:08.537Z"
   },
   {
     "id": "3970180840",
@@ -3805,7 +3813,7 @@
     ],
     "source": "Unlocked by a special offer.",
     "requirements": [
-      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+      "Obtained by reaching Rank 5 on the Heavy Metal event (in the Event Home)"
     ]
   },
   {
@@ -4211,7 +4219,11 @@
     "source": "Unlocked by a special offer.",
     "requirements": [
       "Purchase anything on the Bungie Store during Season of the Forge."
-    ]
+    ],
+    "price": "$700",
+    "redeemed": "45552",
+    "priceSource": "live",
+    "lastUpdated": "2025-05-10T18:19:44.615Z"
   },
   {
     "id": "3961503938",
@@ -4524,7 +4536,7 @@
     ],
     "source": "Unlocked by a special offer.",
     "requirements": [
-      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+      "Given to content creators who are part of the Destiny 2 Creator Hub."
     ]
   },
   {
@@ -8268,7 +8280,7 @@
     ],
     "source": "Unlocked by a special offer.",
     "requirements": [
-      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+      "Awarded from Destiny content creators around the time of Rite of the Nine's release."
     ]
   },
   {
