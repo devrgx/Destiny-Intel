@@ -5,8 +5,46 @@ const path = require("path");
 require("dotenv").config();
 const { getValidAccessToken } = require("./utils/tokenManager");
 
+const mongoose = require("mongoose");
+const Emblem = require("./models/Emblem");  // Dein Mongoose-Modell für Embleme
+
 const app = express();
 const PORT = 3000;
+
+const swaggerUi = require("swagger-ui-express");
+const swaggerJSDoc = require("swagger-jsdoc");
+
+const swaggerDefinition = {
+  openapi: "3.0.0",
+  info: {
+    title: "D2 Emblem API",
+    version: "1.0.0",
+    description: "API zur Anzeige von Destiny 2 Emblemen",
+  },
+  servers: [
+    {
+      url: "https://api.d2emblem.info", // Lokale URL: "http://localhost:3000"
+    },
+  ],
+};
+
+const swaggerOptions = {
+  swaggerDefinition,
+  apis: ["./server.js"],
+};
+
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
+// MongoDB-Verbindung
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/emblems', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('MongoDB verbunden'))
+  .catch((err) => console.log('Fehler bei der MongoDB-Verbindung:', err));
+
 
 const usersFilePath = path.join(__dirname, "./data/users.json");
 
@@ -142,6 +180,94 @@ app.get("/bungie-data", async (req, res) => {
   } catch (error) {
     console.error("API Error:", error.response?.data || error.message);
     res.status(500).send("Failed to fetch Bungie data.");
+  }
+});
+
+/**
+ * @swagger
+ * /emblem:
+ *   get:
+ *     summary: Returns all emblems
+ *     parameters:
+ *       - in: query
+ *         name: available
+ *         schema:
+ *           type: boolean
+ *         description: Show only available emblems (true/false)
+ *       - in: query
+ *         name: source
+ *         schema:
+ *           type: string
+ *         description: Filter emblems by source (e.g., "Event", "Achievement")
+ *       - in: query
+ *         name: name
+ *         schema:
+ *           type: string
+ *         description: Filter emblems by name
+ *       - in: query
+ *         name: id
+ *         schema:
+ *           type: string
+ *         description: Returns a single emblem based on the ID
+ *     responses:
+ *       200:
+ *         description: Successful response with a list of emblems
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: string
+ *                   name:
+ *                     type: string
+ *                   available:
+ *                     type: boolean
+ *                   source:
+ *                     type: string
+ *                   requirements:
+ *                     type: string
+ *       404:
+ *         description: Emblem not found with the provided ID
+ *       500:
+ *         description: Error fetching emblem data
+ */
+
+app.get("/emblem", async (req, res) => {
+  try {
+    let emblems = await Emblem.find();  // Hole alle Embleme
+
+    // Filter nach "available" (nur verfügbare Embleme)
+    if (req.query.available) {
+      const availableFilter = req.query.available === "true";
+      emblems = emblems.filter(emblem => emblem.available === availableFilter);
+    }
+
+    // Filter nach "source"
+    if (req.query.source) {
+      const sourceFilter = req.query.source.toLowerCase();
+      emblems = emblems.filter(emblem => emblem.source && emblem.source.toLowerCase().includes(sourceFilter));
+    }
+
+    // Filter nach "name"
+    if (req.query.name) {
+      const nameFilter = req.query.name.toLowerCase();
+      emblems = emblems.filter(emblem => emblem.name.toLowerCase().includes(nameFilter));
+    }
+
+    // Filter nach "id"
+    if (req.query.id) {
+      const emblem = emblems.find(e => e.id === req.query.id);
+      if (!emblem) return res.status(404).send("Emblem not found.");
+      return res.json(emblem);
+    }
+
+    res.json(emblems);  // Zeige gefilterte Embleme
+  } catch (error) {
+    console.error("Error fetching emblem data:", error);
+    res.status(500).send("Failed to fetch emblem data.");
   }
 });
 
