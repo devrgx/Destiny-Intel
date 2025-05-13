@@ -1,13 +1,10 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
-const emblempath = require("./emblems.json");
+
 const BASE_URL = "https://destinyemblemcollector.com";
 
-if (emblempath) {
-  console.log("OK");
-}
-
+// Emblem-Liste von /destiny2
 async function getEmblemList() {
   const res = await axios.get(`${BASE_URL}/destiny2`);
   const $ = cheerio.load(res.data);
@@ -28,6 +25,7 @@ async function getEmblemList() {
   return emblems;
 }
 
+// Details zu einem Emblem abrufen
 async function getEmblemDetails(id) {
   const res = await axios.get(`${BASE_URL}/emblem?id=${id}`);
   const $ = cheerio.load(res.data);
@@ -36,6 +34,26 @@ async function getEmblemDetails(id) {
   let source = "";
   const requirements = [];
 
+  // Überprüfen des Verfügbarkeitstexts
+  const statusText = $("p").filter((_, el) => {
+    const text = $(el).text().trim();
+    return text.includes("Emblem Currently Available") || text.includes("Emblem Is NOT Currently Available");
+  }).first(); // Wir nehmen nur den ersten Treffer
+
+  let available = false;
+
+  // Bestimmen der Verfügbarkeit anhand des Texts
+  if (statusText.length > 0) {
+    const text = statusText.text().trim();
+
+    if (text === "Emblem Currently Available") {
+      available = true;
+    } else if (text === "Emblem Is NOT Currently Available") {
+      available = false;
+    }
+  }
+
+  // Weitere Emblem-Details abrufen
   $("div.gridemblem-emblemdetail").each((_, el) => {
     const img = $(el).find("img").attr("src");
     if (img) {
@@ -55,28 +73,29 @@ async function getEmblemDetails(id) {
     }
   });
 
-  return { images: imageUrls, source, requirements };
+  return { images: imageUrls, source, requirements, available };
 }
 
+// Hauptfunktion
 async function scrapeAll() {
-  console.log("🔄 Loading Emblems ...");
+  console.log("🔄 Lade Emblems ...");
   const emblemList = await getEmblemList();
   const fullData = [];
 
   for (const emblem of emblemList) {
-    console.log(`🔍 Gathering Emblem details: ${emblem.name} (${emblem.id})`);
+    console.log(`🔍 Details für ${emblem.name} (${emblem.id})`);
     try {
       const details = await getEmblemDetails(emblem.id);
       fullData.push({ ...emblem, ...details });
     } catch (e) {
       console.error(
-        `❌ Error with Emblem ID ${emblem.id} / ${emblem.name}: ${e.message}`
+        `❌ Fehler bei ${emblem.id} / ${emblem.name}: ${e.message}`
       );
     }
   }
 
   fs.writeFileSync("./data/emblems.json", JSON.stringify(fullData, null, 2));
-  console.log("✅ Done! Emblems exported to emblems.json");
+  console.log("✅ Fertig! Emblems exportiert nach ./data/emblems.json");
 }
 
 scrapeAll();
