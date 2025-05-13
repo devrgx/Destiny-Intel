@@ -7,15 +7,12 @@
     "delete:guild": "node manage-commands.js delete",
     "status:guild": "node manage-commands.js status",
     "reset:guild": "npm run delete:guild && npm run deploy:guild",
-
     "deploy:guild:slow": "node manage-commands.js deploy --sequential",
     "reset:guild:slow": "npm run delete:guild && npm run deploy:guild:slow",
-
     "deploy:global": "node manage-commands.js deploy --global",
     "delete:global": "node manage-commands.js delete --global",
     "status:global": "node manage-commands.js status --global",
     "reset:global": "npm run delete:global && npm run deploy:global",
-
     "deploy:global:slow": "node manage-commands.js deploy --global --sequential",
     "reset:global:slow": "npm run delete:global && npm run deploy:global:slow"
   },
@@ -30,7 +27,10 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "helmet": "^8.1.0",
-    "morgan": "^1.10.0"
+    "mongoose": "^8.14.2",
+    "morgan": "^1.10.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"
