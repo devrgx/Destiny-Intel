@@ -31,6 +31,30 @@ module.exports = {
         iconURL: "https://i.imgur.com/cVoKfFP.png",
       });
 
-    await interaction.reply({ content: "Credits go to:", embeds: [dec_embed] });
+      const emblemsreport_embed = new EmbedBuilder()
+      .setTitle("emblems.report")
+      .setDescription(
+        "Data for the market value and redeemed status are from [emblems.report](https://emblems.report/)"
+      )
+      .addFields(
+        {
+          name: "Links",
+          value: `<:x_twitter:1368230590343549000> [@emblemsreport](https://x.com/emblemsreport)\n<:emblemsreport:1371211171935289458> [emblems.report](https://emblems.report/)`,
+          inline: true,
+        },
+        {
+          name: "\u200B",
+          value: `<:discord:1371211173801885809> [Discord](https://discord.gg/Sn9sdac9EU)`,
+          inline: true,
+        }
+      )
+      //
+      .setColor(0x0099ff)
+      .setFooter({
+        text: `Destiny Intel | v ${data.version}`,
+        iconURL: "https://i.imgur.com/cVoKfFP.png",
+      });
+
+    await interaction.reply({ content: "Credits go to:", embeds: [dec_embed , emblemsreport_embed] });
   },
 };

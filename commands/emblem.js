@@ -137,35 +137,37 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setTitle(emblem.name)
       .addFields(
-        { name: "**Source**", value: `${emblem.source || "_unknown_"}` },
+        { name: "Source",
+          value: `${emblem.source || "_unknown_"}` },
         {
-          name: "**Requirements:**",
+          name: "Requirements",
           value: `${emblem.requirements?.join("\n") || "_unknown_"}`,
         },
         {
-          name: "Links",
-          value: `<:destinyemblemcollector:1368220405420003348> [DEC](https://destinyemblemcollector.com/emblem?id=${emblem.id})\n<:emblemreport:1368220407127081031> [emblems.report](https://emblems.report/emblem/${emblem.id})`,
-          inline: true,
+          name: "Available?",
+          value: emblem.available ? "✅" : "❌",
+          inline: false,
         },
         {
-          name: "\u200B",
-          value: `<:lightgg:1368220409039683594> [light.gg](https://www.light.gg/db/items/${emblem.id})\n<:dataexplorer:1368220403281035366> [DataExplorer](https://data.destinysets.com/i/InventoryItem:${emblem.id})`,
+          name: "Links",
+          value: `<:destinyemblemcollector:1368220405420003348> [DEC](https://destinyemblemcollector.com/emblem?id=${emblem.id})\n<:emblemsreport:1371211171935289458> [emblems.report](https://emblems.report/emblem/${emblem.id})\n<:lightgg:1368220409039683594> [light.gg](https://www.light.gg/db/items/${emblem.id})\n<:dataexplorer:1368220403281035366> [DataExplorer](https://data.destinysets.com/i/InventoryItem:${emblem.id})`,
           inline: true,
         },
         {
           name: "\u200B",
           value: "\u200B",
+          inline: false,
         },
         {
-          name: "**Price**",
+          name: "Market Value",
           value:
             emblem.price && emblem.price !== "N/A"
               ? emblem.price
               : "🔻 No Price Available",
-          inline: true,
+              inline: true,
         },
         {
-          name: "**Redeemed**",
+          name: "Redeemed",
           value: emblem.redeemed,
           inline: true,
         },
