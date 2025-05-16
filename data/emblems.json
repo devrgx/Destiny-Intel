@@ -12,11 +12,7 @@
     "requirements": [
       "Purchase a qualifying 30th Anniversary item from the Bungie Store.  The items that qualify will have a note about the emblem in their description."
     ],
-    "available": false,
-    "price": "$24",
-    "redeemed": "23127",
-    "priceSource": "live",
-    "lastUpdated": "2025-05-11T21:59:18.337Z"
+    "available": false
   },
   {
     "id": "2588647362",
@@ -296,11 +292,7 @@
       "In 2022: Donate $100 during the 2022 Bungie Day Giving Festival.",
       "Previously: Donate at least $20 to the Bungie Foundation COVID-19 fundraiser."
     ],
-    "available": false,
-    "price": "$17",
-    "redeemed": "40920",
-    "priceSource": "live",
-    "lastUpdated": "2025-05-11T22:10:21.121Z"
+    "available": false
   },
   {
     "id": "1661191194",
@@ -2281,11 +2273,7 @@
     "requirements": [
       "Purchase the Festival of the Lost 2018 Papercraft Masks set from the Bungie Store."
     ],
-    "available": false,
-    "price": "$1744",
-    "redeemed": "5750",
-    "priceSource": "live",
-    "lastUpdated": "2025-05-11T22:05:10.450Z"
+    "available": false
   },
   {
     "id": "3986958431",
@@ -4084,7 +4072,7 @@
     "requirements": [
       "Obtained by reaching Rank 5 on the Heavy Metal event reputation track (in the Event Home)"
     ],
-    "available": true
+    "available": false
   },
   {
     "id": "3992231371",
@@ -4236,7 +4224,7 @@
     ],
     "source": "Unlocked by a special offer.",
     "requirements": [
-      "Added in Episode 03: Heresy.  Unknown how to obtain yet."
+      "Available during the Bungie Foundation For Good livestream, taking place on 2025-05-22 at 10AM PT."
     ],
     "available": false
   },
@@ -4502,11 +4490,7 @@
     "requirements": [
       "Came with any of the Destiny 2 Armor Series 2 pin blind bags."
     ],
-    "available": false,
-    "price": "$667",
-    "redeemed": "6882",
-    "priceSource": "live",
-    "lastUpdated": "2025-05-11T22:03:37.021Z"
+    "available": false
   },
   {
     "id": "3961503937",
@@ -5098,7 +5082,7 @@
     ],
     "source": "Unlocked by a special offer.",
     "requirements": [
-      "Added in Season of the Seraph (Season 19).  Unknown how to obtain yet."
+      "Awarded to Guardians that are Bungie community volunteers (Mentors, Ninjas, Discord Mods, stream mods, etc.) starting around mid-May 2025."
     ],
     "available": false
   },
@@ -7335,11 +7319,7 @@
     "requirements": [
       "Watch any Destiny 2 Twitch Drop-enabled streamer for one hour between 2025-05-09 at reset to 2025-05-16 to get this emblem as a Twitch Drop."
     ],
-    "available": false,
-    "price": "$3",
-    "redeemed": "9386",
-    "priceSource": "live",
-    "lastUpdated": "2025-05-11T22:06:44.106Z"
+    "available": false
   },
   {
     "id": "2420153991",
@@ -7354,11 +7334,7 @@
     "requirements": [
       "Get your first gold medal in Crucible.  You can see which medals count towards this emblem in your menu by navigating to Collections -> Medals -> Crucible -> Medals -> Gold Tier.  Any of these Medals will unlock this emblem.  Note that Iron Banner gold medals do not count towards this emblem."
     ],
-    "available": true,
-    "price": "N/A",
-    "redeemed": "5416499",
-    "priceSource": "live",
-    "lastUpdated": "2025-05-11T22:07:34.174Z"
+    "available": true
   },
   {
     "id": "1968995960",
@@ -10188,11 +10164,7 @@
     "requirements": [
       "Purchase one of The Series 3 Ghost Collectible Pins and the emblem code will come attached to the pin."
     ],
-    "available": false,
-    "price": "$159",
-    "redeemed": "6037",
-    "priceSource": "live",
-    "lastUpdated": "2025-05-11T22:02:33.847Z"
+    "available": false
   },
   {
     "id": "1935440659",
@@ -13284,7 +13256,7 @@
     ],
     "source": "Win competitive matches while at Ascendant 0 Rank.",
     "requirements": [
-      "Awarded after winning competitive matches while at Ascendant 0 Rank. As people earn this we'll have more concrete info."
+      "Awarded after winning competitive matches while at Ascendant 0 Rank."
     ],
     "available": true
   },
