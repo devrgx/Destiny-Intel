@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "scrape": "node data/scraper_dec && node importEmblems.js",
     "deploy:guild": "node manage-commands.js deploy",
     "delete:guild": "node manage-commands.js delete",
     "status:guild": "node manage-commands.js status",
