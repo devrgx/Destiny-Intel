@@ -1,21 +1,11 @@
 {
   "name": "destiny-intel",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "bot/index.js",
   "scripts": {
-    "scrape": "node data/scraper_dec && node importEmblems.js",
-    "deploy:guild": "node manage-commands.js deploy",
-    "delete:guild": "node manage-commands.js delete",
-    "status:guild": "node manage-commands.js status",
-    "reset:guild": "npm run delete:guild && npm run deploy:guild",
-    "deploy:guild:slow": "node manage-commands.js deploy --sequential",
-    "reset:guild:slow": "npm run delete:guild && npm run deploy:guild:slow",
-    "deploy:global": "node manage-commands.js deploy --global",
-    "delete:global": "node manage-commands.js delete --global",
-    "status:global": "node manage-commands.js status --global",
-    "reset:global": "npm run delete:global && npm run deploy:global",
-    "deploy:global:slow": "node manage-commands.js deploy --global --sequential",
-    "reset:global:slow": "npm run delete:global && npm run deploy:global:slow"
+    "scrape": "node scraper/scraper_dec && node importEmblems.js",
+    "scrape:full": "node scraper/scraper_dec && node scraper/scraper_es && node api/utils/importEmblems.js",
+    "manage": "node bot/manageCommands.js"
   },
   "author": "rgx",
   "license": "ISC",
@@ -23,13 +13,16 @@
   "dependencies": {
     "@discordjs/rest": "^2.5.0",
     "axios": "^1.9.0",
+    "chalk": "^4.1.2",
     "cheerio": "^1.0.0",
     "discord.js": "^14.19.2",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "helmet": "^8.1.0",
+    "inquirer": "^8.2.6",
     "mongoose": "^8.14.2",
     "morgan": "^1.10.0",
+    "node-cron": "^4.0.5",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },

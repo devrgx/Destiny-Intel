@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_11" data-name="Layer 11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 792 792">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #afaeae;
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-2);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="313.228476810776556" y1="391.32741401351268" x2="643.926132203856469" y2="409.995830043765295" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e3e3e3"/>
+      <stop offset=".358830125175384" stop-color="#818182"/>
+      <stop offset=".596522530132437" stop-color="#6b6b6b"/>
+      <stop offset=".807224714096236" stop-color="#494848"/>
+      <stop offset="1" stop-color="#313131"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="273.340925657545995" y1="5.604669390593699" x2="784.055449913943676" y2="1631.090322310609736" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e3e3e3"/>
+      <stop offset=".305535260368796" stop-color="#818182"/>
+      <stop offset=".596522530132437" stop-color="#6b6b6b"/>
+      <stop offset=".807224714096236" stop-color="#494848"/>
+      <stop offset="1" stop-color="#313131"/>
+    </linearGradient>
+  </defs>
+  <polygon class="cls-1" points="457.339081242260363 27.965512546401442 457.339081242260363 764.034487453598558 438.017259558089791 744.712665769424348 353.982740441910209 744.712665769424348 334.660918757730542 764.034487453598558 334.660918757730542 27.965512546401442 353.982740441910209 47.287334230576562 438.017259558089791 47.287334230576562 457.339081242260363 27.965512546401442"/>
+  <polygon class="cls-3" points="438.017259558089791 744.712665769424348 457.339081242260363 764.034487453598558 334.660918757730542 764.034487453598558 353.982740441910209 744.712665769424348 353.982740441910209 47.287334230576562 334.660918757730542 27.965512546401442 457.339081242260363 27.965512546401442 438.017259558089791 47.287334230576562 438.017259558089791 744.712665769424348"/>
+  <rect class="cls-2" x="353.982740441910209" y="47.287334230576562" width="84.034519116179581" height="697.425331538847786"/>
+</svg>

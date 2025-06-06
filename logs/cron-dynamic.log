@@ -1,0 +1,58 @@
+[23.5.2025, 09:29:24] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
+[23.5.2025, 09:32:20] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
+[23.5.2025, 09:33:00] 🔄 Starting automatic dynamic update...
+[23.5.2025, 09:34:52] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
+[23.5.2025, 09:35:01] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
+[23.5.2025, 09:35:24] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
+[23.5.2025, 10:00:00] 🔄 Starting automatic dynamic update...
+[23.5.2025, 10:29:56] ❌ Cron error: Command failed: node scraper/scraper_es.js && node api/utils/importEmblems.js
+❌ Fehler bei 3800278197: socket hang up
+❌ Fehler bei 3320175784: Request failed with status code 404
+❌ Fehler bei 2588647367: Request failed with status code 404
+/root/bots/DestinyIntel/api/utils/importEmblems.js:103
+    await notifyAdmin(client, message);
+                      ^
+
+ReferenceError: client is not defined
+    at /root/bots/DestinyIntel/api/utils/importEmblems.js:103:23
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+Node.js v18.19.1
+
+[23.5.2025, 16:00:00] 🔄 Starting automatic dynamic update...
+[23.5.2025, 16:16:09] ❌ Cron error: Command failed: node scraper/scraper_es.js && node api/utils/importEmblems.js
+❌ Fehler bei 3320175784: Request failed with status code 404
+❌ Fehler bei 2588647367: Request failed with status code 404
+/root/bots/DestinyIntel/api/utils/importEmblems.js:93
+  runImport();
+  ^
+
+ReferenceError: runImport is not defined
+    at Object.<anonymous> (/root/bots/DestinyIntel/api/utils/importEmblems.js:93:3)
+    at Module._compile (node:internal/modules/cjs/loader:1356:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1414:10)
+    at Module.load (node:internal/modules/cjs/loader:1197:32)
+    at Module._load (node:internal/modules/cjs/loader:1013:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+    at node:internal/main/run_main_module:28:49
+
+Node.js v18.19.1
+
+[23.5.2025, 17:14:28] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
+[23.5.2025, 17:20:30] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
+[23.5.2025, 18:51:01] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
+[29.5.2025, 08:15:52] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
+[29.5.2025, 08:16:07] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
+[29.5.2025, 10:00:00] 🔄 Starting automatic dynamic update...
+[29.5.2025, 16:00:00] 🔄 Starting automatic dynamic update...
+[30.5.2025, 16:00:00] 🔄 Starting automatic dynamic update...
+[31.5.2025, 04:00:00] 🔄 Starting automatic dynamic update...
+[31.5.2025, 10:00:00] 🔄 Starting automatic dynamic update...
+[31.5.2025, 16:00:00] 🔄 Starting automatic dynamic update...
+[1.6.2025, 06:53:05] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
+[1.6.2025, 06:53:44] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
+[1.6.2025, 10:00:00] 🔄 Starting automatic dynamic update...
+[1.6.2025, 16:00:00] 🔄 Starting automatic dynamic update...
+[2.6.2025, 16:00:00] 🔄 Starting automatic dynamic update...
+[3.6.2025, 16:00:00] 🔄 Starting automatic dynamic update...
+[3.6.2025, 18:48:39] 🕒 Cron watcher started (every 6 hours for dynamic scraper)
