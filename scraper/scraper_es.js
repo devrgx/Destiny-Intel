@@ -2,24 +2,24 @@ const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
 const cheerio = require("cheerio");
+const chalk = require("chalk");
 
 const emblemsPath = path.join(__dirname, "../bot/data/emblems.json");
 
-console.log("📁 Lese emblems.json...");
+console.log(chalk.gray("📁 Loading emblems.json..."));
 let emblems;
 
 try {
   emblems = require(emblemsPath);
   if (!Array.isArray(emblems)) throw new Error("Die JSON enthält kein Array.");
-  console.log(`📦 ${emblems.length} Embleme geladen.`);
+  console.log(chalk.green(`📦 Loaded ${emblems.length} emblems.`));
 } catch (e) {
-  console.error("❌ Fehler beim Laden von emblems.json:", e.message);
+  console.error(chalk.red("❌ Error loading emblems.json:"), e.message);
   process.exit(1);
 }
 
 async function getEmblemReportData(emblemId) {
   const url = `https://emblems.report/emblem/${emblemId}`;
-  console.log(`🌐 Hole Daten für ${emblemId}...`);
 
   try {
     const res = await axios.get(url);
@@ -37,7 +37,7 @@ async function getEmblemReportData(emblemId) {
     });
 
     if (!redeemed || redeemed === "error") {
-      throw new Error("Fehlender oder ungültiger Redeemed-Wert");
+      throw new Error("Invalid or missing redeemed value");
     }
 
     return {
@@ -47,7 +47,7 @@ async function getEmblemReportData(emblemId) {
       lastUpdated: new Date().toISOString(),
     };
   } catch (e) {
-    console.error(`❌ Fehler bei ${emblemId}: ${e.message}`);
+    console.error(chalk.red(`❌ [${emblemId}] Failed:`), e.message);
     return {
       price: "error",
       redeemed: "error",
@@ -58,19 +58,21 @@ async function getEmblemReportData(emblemId) {
 }
 
 (async () => {
-  console.log("🚀 Starte Emblem-Erweiterung...");
+  let updatedCount = 0;
 
-  for (const emblem of emblems) {
-    if (!emblem?.id) {
-      console.warn("⚠️ Kein ID-Feld, überspringe:", emblem?.name || "Unbekannt");
-      continue;
+  for (let i = 0; i < emblems.length; i++) {
+    const emblem = emblems[i];
+    const newData = await getEmblemReportData(emblem.id);
+
+    if (newData.price !== "error") {
+      emblems[i] = { ...emblem, ...newData };
+      console.log(chalk.blue("✏️ Updated:"), chalk.white(emblem.name));
+      updatedCount++;
+    } else {
+      console.log(chalk.gray("⏭️ Skipped:"), chalk.white(emblem.name));
     }
-
-    const reportData = await getEmblemReportData(emblem.id);
-    Object.assign(emblem, reportData);
-    console.log(`✅ ${emblem.name} erweitert`);
   }
 
   fs.writeFileSync(emblemsPath, JSON.stringify(emblems, null, 2));
-  console.log("💾 emblems.json gespeichert!");
+  console.log(chalk.green(`✅ Finished. ${updatedCount} emblems updated.`));
 })();
