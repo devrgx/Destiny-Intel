@@ -1,152 +1,85 @@
-const {
-  SlashCommandBuilder,
-  EmbedBuilder,
-  ButtonBuilder,
-  ButtonStyle,
-  ActionRowBuilder,
-} = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { getUserBungieData, getValidAccessToken } = require("../../utils/tokenManager");
+const emblems = require("../data/emblems.json");
+const hashMap = require("../data/hash.json");
 const axios = require("axios");
-const { fetchFromAPI } = require("../utils/api");
-const { getValidAccessToken } = require("../utils/tokenManager");
-const { FOOTER } = require("../constants");
-require("dotenv").config();
-
-function createAuthEmbed(targetUser, interactionUser) {
-  const isSelf = targetUser.id === interactionUser.id;
-
-  const bungieAuthURL = `https://www.bungie.net/en/OAuth/Authorize?client_id=${
-    process.env.BUNGIE_CLIENT_ID
-  }&response_type=code&redirect_uri=${encodeURIComponent(
-    process.env.BUNGIE_REDIRECT_URI
-  )}&state=${targetUser.id}`;
-
-  const embed = new EmbedBuilder()
-    .setTitle("❌ Not linked!")
-    .setDescription(
-      isSelf
-        ? "You have not linked a Bungie profile yet.\nClick the button below to link your account."
-        : `**${targetUser.username}** has not linked a Bungie profile.`
-    )
-    .setColor(0xf54242)
-    .setFooter(FOOTER);
-
-  const components = isSelf
-    ? [
-        new ActionRowBuilder().addComponents(
-          new ButtonBuilder()
-            .setLabel("Link with Bungie")
-            .setStyle(ButtonStyle.Link)
-            .setURL(bungieAuthURL)
-        ),
-      ]
-    : [];
-
-  return { embed, components };
-}
+const { EMBED_COLOR, FOOTER_TEXT, FOOTER_ICON } = require("../utils/constants");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("check")
-    .setDescription("Check if a user owns a specific emblem")
-    .addStringOption((option) =>
-      option
-        .setName("emblem")
-        .setDescription("Name of the emblem")
-        .setAutocomplete(true)
+    .setDescription("Check if you or another user owns a specific emblem.")
+    .addStringOption(option =>
+      option.setName("emblem")
+        .setDescription("Emblem name")
         .setRequired(true)
+        .setAutocomplete(true)
     )
-    .addUserOption((option) =>
-      option
-        .setName("user")
-        .setDescription("Check for another user")
+    .addUserOption(option =>
+      option.setName("user")
+        .setDescription("User to check")
         .setRequired(false)
     ),
 
   async autocomplete(interaction) {
-    const focused = interaction.options.getFocused();
-    try {
-      const results = await fetchFromAPI("/emblem", "GET", { name: focused });
-      if (!results || !Array.isArray(results)) return interaction.respond([]);
-      return interaction.respond(
-        results.slice(0, 25).map((e) => ({ name: e.name, value: e.name }))
-      );
-    } catch (err) {
-      console.error("Autocomplete failed:", err);
-      return interaction.respond([]);
-    }
+    const focused = interaction.options.getFocused().toLowerCase();
+    const choices = emblems
+      .filter(e => e.name.toLowerCase().includes(focused))
+      .slice(0, 25)
+      .map(e => ({ name: e.name, value: e.id }));
+
+    await interaction.respond(choices);
   },
 
   async execute(interaction) {
-    const emblemName = interaction.options.getString("emblem");
+    const emblemId = interaction.options.getString("emblem");
     const targetUser = interaction.options.getUser("user") || interaction.user;
 
-    await interaction.deferReply();
+    const emblem = emblems.find(e => e.id === emblemId);
+    const collectibleHash = hashMap[emblemId];
 
-    const userData = await fetchFromAPI(`/users/${targetUser.id}`, "GET").catch(
-      () => null
-    );
-    if (!userData || !userData.destinyMembershipId) {
-      const { embed, components } = createAuthEmbed(
-        targetUser,
-        interaction.user
-      );
-      return interaction.editReply({ embeds: [embed], components });
+    if (!collectibleHash) {
+      const embed = new EmbedBuilder()
+        .setTitle(emblem?.name || "Unknown Emblem")
+        .setDescription("🔒 This emblem cannot be verified via Bungie API.")
+        .setColor(EMBED_COLOR)
+        .setThumbnail(emblem?.images?.[1] || emblem?.images?.[0] || null)
+        .setFooter({ text: FOOTER_TEXT, iconURL: FOOTER_ICON });
+
+      return interaction.reply({ embeds: [embed], ephemeral: true });
     }
 
-    const emblemResult = await fetchFromAPI("/emblem", "GET", {
-      name: emblemName,
-    }).catch(() => null);
-    const emblem = Array.isArray(emblemResult) ? emblemResult[0] : null;
-
-    if (!emblem || !emblem.collectibleHash) {
-      return interaction.editReply({
-        content: "❌ Emblem not found or missing `collectibleHash`.",
-        ephemeral: true,
-      });
+    const bungieData = getUserBungieData(targetUser.id);
+    if (!bungieData) {
+      return interaction.reply({ content: "❌ User is not linked to Bungie.", ephemeral: true });
     }
 
-    let accessToken;
+    const { membershipType, membershipId } = bungieData;
+    const accessToken = await getValidAccessToken(targetUser.id);
+
     try {
-      accessToken = await getValidAccessToken(targetUser.id);
-    } catch {
-      return interaction.editReply({
-        content: "❌ Could not retrieve Bungie access token. Please re-link.",
-        ephemeral: true,
-      });
-    }
-
-    const url = `https://www.bungie.net/Platform/Destiny2/${userData.membershipType}/Profile/${userData.destinyMembershipId}/?components=800`;
-
-    let owned = false;
-    try {
-      const response = await axios.get(url, {
+      const res = await axios.get(`https://www.bungie.net/Platform/Destiny2/${membershipType}/Profile/${membershipId}/?components=800`, {
         headers: {
-          Authorization: `Bearer ${accessToken}`,
           "X-API-Key": process.env.BUNGIE_API_KEY,
-        },
+          Authorization: `Bearer ${accessToken}`,
+        }
       });
-      const collectibles =
-        response.data.Response.profileCollectibles?.data?.collectibles || {};
-      owned = collectibles[emblem.collectibleHash]?.state === 0;
-    } catch {
-      return interaction.editReply({
-        content: "❌ Could not fetch collectibles from Bungie.",
-        ephemeral: true,
-      });
+
+      const state = res.data.Response.profileCollectibles?.data?.collectibles?.[collectibleHash]?.state;
+      const owned = state === 0;
+
+      const embed = new EmbedBuilder()
+        .setTitle(emblem.name)
+        .setColor(owned ? 0x00ff99 : 0xff5555)
+        .setThumbnail(emblem.images?.[1] || emblem.images?.[0] || null)
+        .setDescription(`${targetUser} ${owned ? "✅ owns" : "❌ does not own"} this emblem.`)
+        .setFooter({ text: FOOTER_TEXT, iconURL: FOOTER_ICON });
+
+      return interaction.reply({ embeds: [embed] });
+
+    } catch (err) {
+      console.error("❌ API error:", err.message);
+      return interaction.reply({ content: "❌ API error. Try again later.", ephemeral: true });
     }
-
-    const embed = new EmbedBuilder()
-      .setTitle(owned ? "✅ Emblem found!" : "❌ Emblem not found!")
-      .setDescription(
-        `${userData.displayName || targetUser.username} ${
-          owned ? "**owns**" : "**does not own**"
-        } the emblem **${emblem.name}**.`
-      )
-      .setThumbnail(emblem.images?.[0] || null)
-      .setImage(emblem.images?.[2] || null)
-      .setColor(owned ? "Green" : "Red")
-      .setFooter(FOOTER);
-
-    return interaction.editReply({ embeds: [embed] });
-  },
+  }
 };
